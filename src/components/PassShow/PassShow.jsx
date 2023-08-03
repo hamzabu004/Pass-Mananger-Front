@@ -2,7 +2,7 @@
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import LibraryAddOutlinedIcon from '@mui/icons-material/LibraryAddOutlined';
 import {useSelector} from "react-redux";
-
+import { Link } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -20,7 +20,7 @@ function PassShow() {
 
   return (
     <div className='flex flex-row w-full md:w-2/5 justify-between bg-main-back font-roboto p-4'>
-            <a href={"/register"}> <p className='font-bold'>{password}</p></a>
+            <Link to={"/register"}> <p className='font-bold'>{password}</p></Link>
             <div  className=''>
                 <span 
                     className='mx-2 inline-block cursor-pointer' 

@@ -3,6 +3,7 @@ import WrapDiv from "../components/DivWrapper/DivWrap.jsx";
 import {useState} from "react";
 import TextInput from "../components/TextInput/TextInput.jsx";
 import Btn from "../components/button/btn.jsx";
+import { Link } from "react-router-dom";
 export default function Register () {
     const [username, setUsername] = useState("")
     const [pass, setpass] = useState("")
@@ -18,7 +19,7 @@ export default function Register () {
                     <TextInput label={"Password"} />
                     <TextInput label={"Confirm Password"} />
                     <Btn label={"Login"}/>
-                    <p >Already have an account? <a href={'/login'} className={"text-text-clr cursor-pointer"}>Login</a> </p>
+                    <p >Already have an account? <Link to={'/login'} className={"text-text-clr cursor-pointer"}>Login</Link> </p>
                 </div>
             </WrapDiv>
 
