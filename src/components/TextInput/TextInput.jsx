@@ -1,7 +1,12 @@
 import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import './TextInput.css'
-const CssTextField = styled(TextField)({
+import Tooltip from '@mui/material/Tooltip';
+
+    const CssTextField = styled(TextField)(({validInput, value}) => ({
+    "& .Mui-error": {
+        borderColor: 'red'
+      },
     width: '100%',
     '& input': {
         color: 'white',
@@ -10,8 +15,6 @@ const CssTextField = styled(TextField)({
     '& label' : {
         color: '#ffffff',
         opacity: '.5'
-
-
     },
   '& label.Mui-focused': {
     color: '#FFB300',
@@ -22,7 +25,7 @@ const CssTextField = styled(TextField)({
   '& .MuiOutlinedInput-root': {
 
     '& fieldset': {
-      borderColor: '#FFB300',
+      borderColor: (!validInput && value !== "") ? "red" : '#FFB300',
         color: '#FFB300',
         borderRadius: 0
     },
@@ -30,20 +33,35 @@ const CssTextField = styled(TextField)({
       borderColor: '#ffffff',
     },
     '&.Mui-focused fieldset': {
-      borderColor: '#FFB300',
+      borderColor: (!validInput && value !== "") ? "red" : '#FFB300',
+      // borderColor: 'red',
     },
   },
-});
+}));
 export default function TextInput (props) {
+
     return(
-        <CssTextField sx={{
-            ":root": {
-                input:{
-                    textSize: 5
+        <Tooltip title={ !props.validInput ? props.toolpitTitle : ""}  disableHoverListener={!props.validInput} disableFocusListener={props.validInput}>
+        <CssTextField
+            sx={{
+                ":root": {
+                    input:{
+                        textSize: 5
+                    }
                 }
-            }
-        }} size={"small"} label={props.label} >
+            }}
+            validInput={props.validInput}
+            size={"small"}
+            label={props.label}
+            error={false}
+            value={props.value}
+            onChange={(e) => props.handler(e, props.setChange)}
+            onKeyUp={props.handleUP}
+            onKeyDown={props.handleDN}
+
+        >
 
         </CssTextField>
+        </Tooltip>
     )
 }
