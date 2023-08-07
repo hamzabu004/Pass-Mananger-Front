@@ -5,7 +5,6 @@ import Btn from "../components/button/btn.jsx";
 import { Link } from "react-router-dom";
 import Alert from '@mui/material/Alert';
 import {useDispatch} from "react-redux";
-import {p} from "../../dist/assets/index-1537934d.js";
 
 export default function Register () {
     let typingTimer;
